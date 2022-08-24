@@ -1,7 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_voice_cmd/product_details_page.dart';
+import 'package:flutter_voice_cmd/details_page.dart';
+import 'package:flutter_voice_cmd/information_page.dart.dart';
 import 'package:alan_voice/alan_voice.dart';
 
 void main() {
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
       initialRoute: '/',
       routes: {
-        '/second': (context) => const ProductDetailsPage(),
+        '/detailsPage': (context) => const DetailsPage(),
+        '/informationPage': (context) => const InformationPage(),
       },
     );
   }
@@ -63,8 +65,11 @@ class _MyHomePageState extends State<MyHomePage> {
       case "increment":
         _incrementCounter();
         break;
-      case "forward":
-        Navigator.pushNamed(context, '/second');
+      case "details":
+        Navigator.pushNamed(context, '/detailsPage');
+        break;
+      case "information":
+        Navigator.pushNamed(context, '/informationPage');
         break;
       case "back":
         Navigator.of(context).pop();
@@ -93,9 +98,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/second');
+                Navigator.pushNamed(context, '/detailsPage');
               },
-              child: const Text('Open Product Details Page'),
+              child: const Text('Details Page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/informationPage');
+              },
+              child: const Text('Information Page'),
             ),
           ],
         ),
